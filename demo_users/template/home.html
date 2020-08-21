@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home{% endblock title %}
+{% block title %}List Tasks{% endblock title %}
 {% block content %}
 
-{% if user.is_authenticated %}
 
-<h1>Hi {{ user.email }}!</h1>
+<div class="mt-4">
+    <table class="table  table-bordered">
+        <thead>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Employee</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
 
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-{% endif %}
+            <tr>
+                <td>{{task.date}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.employee}}</td>
+                <td><a href="{% url 'update_task' task.id %}">+</a></td>
+                <td><a href="">-</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
 {% endblock content %}
