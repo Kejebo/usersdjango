@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}    
+<a href="{% url 'app_users:logout' %}">LogOut</a>
+<a href="{% url 'app_users:changes_password' %}">Changes Password</a>
+{% endblock content %}
