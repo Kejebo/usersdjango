@@ -8,13 +8,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     View,
     CreateView,
-    TemplateView
+    ListView,
+    
+    
 )
 from .models import CustomUser
 
-class Home(LoginRequiredMixin, TemplateView):
+class ListUsers(LoginRequiredMixin, ListView):
     template_name='home.html'
+    context_object_name ='users'
     login_url= reverse_lazy('app_users:login')
+    
+    def get_queryset(self):
+        return CustomUser.objects.all()
     
 class RegisterUser(FormView):
     template_name='user/register.html'
@@ -23,8 +29,8 @@ class RegisterUser(FormView):
     
     def form_valid(self, form):
         password1=form.cleaned_data['password1']
-        password2=form.cleaned_data['password2']
-       
+        password2=form.cleaned_data['password3']
+
         if password1 == password2:
             user=CustomUser.objects.create_user(
                 form.cleaned_data['email'],

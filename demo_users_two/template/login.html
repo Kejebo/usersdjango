@@ -2,12 +2,22 @@
 
 
 {% block content %}
-<h1>Sing In</h1>
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Sign In</button>
-    </form>
-        
-{% endblock content %}
-    
+<div class="row mt-4">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card shadow">
+            <div class="card-header">
+                <h4>Sing In</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-success">Sign In</button>
+                    <a href="{% url 'app_users:user_register' %}" class="ml-4">Sign Up</a>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    {% endblock content %}

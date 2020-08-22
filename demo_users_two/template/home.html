@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}    
-<a href="{% url 'app_users:logout' %}">LogOut</a>
-<a href="{% url 'app_users:changes_password' %}">Changes Password</a>
+<div class="container">
+    
+    <table class="table table-light">
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Staff</th>
+
+        </thead>
+        <tbody>
+            {% for userss in users %}
+            <tr>
+                <td>{{userss.username}}</td>
+                <td>{{userss.email}}</td>
+                <td>{{userss.is_staff}}</td>
+                                        
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+        
 {% endblock content %}

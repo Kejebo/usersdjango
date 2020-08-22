@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Save</button>
-    </form>    
+<div class="row mt-4">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h4>Register New user</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="{% url 'app_users:login' %}" class="ml-4">Sign In</a>
+
+                    </form>         
+                    </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+
 {% endblock content %}
     

@@ -14,7 +14,7 @@ class UserRegisterForm(forms.ModelForm):
         )
     )
 
-    password2 = forms.CharField(
+    password3 = forms.CharField(
         label='password',
         required=True,
         widget=forms.PasswordInput(
@@ -73,6 +73,5 @@ class UpdatePasswordForms(forms.Form):
             }
             )
     )
-    
- 
+
     
